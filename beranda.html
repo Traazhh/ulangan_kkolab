@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda Tim Kami</title>
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icon FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* 1. VARIABEL WARNA BARU (Tema Harmonis Biru/Indigo) */
+        :root {
+            /* Warna latar belakang gradasi yang menyatu */
+            --bg-gradient-start: #2b5876; 
+            --bg-gradient-end: #4e4376;
+            
+            /* Warna Utama (Biru Indigo) */
+            --primary-color: #4e54c8;
+            
+            /* Warna Aksen Tombol (Cyan ke Biru) */
+            --btn-gradient-start: #00c6ff;
+            --btn-gradient-end: #0072ff;
+            
+            /* Warna Teks */
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            
+            /* Efek Kaca */
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --shadow-color: rgba(78, 84, 200, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Background gradasi biru yang elegan dan tenang */
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            background-attachment: fixed; /* Agar background diam saat scroll */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-dark);
+            padding: 20px;
+        }
+
+        /* Container Utama dengan Efek Kaca */
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 35px var(--shadow-color);
+            padding: 50px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Header */
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+        }
+
+        /* Grid Layout Kartu */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Desain Kartu Profil */
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 35px 25px;
+            /* Shadow halus dengan warna tema */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px var(--shadow-color);
+        }
+
+        /* Styling Khusus Owner (Menonjol tapi tetap satu warna) */
+        .card.owner {
+            background: linear-gradient(to bottom right, #ffffff, #f4f6ff);
+            border: 2px solid var(--primary-color); /* Border tipis warna tema */
+            position: relative;
+        }
+
+        .card.owner::after {
+            content: 'OWNER';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Avatar Gambar */
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #f0f2f5;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover .avatar {
+            border-color: var(--btn-gradient-start);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .card .role {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .owner .role i {
+            color: var(--primary-color);
+        }
+
+        /* Ikon Sosial Media */
+        .social-icons {
+            margin-top: auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #bdc3c7;
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Tombol Lihat Nilai (Warna Menyatu dengan Tema) */
+        .cta-section {
+            margin-top: 30px;
+        }
+
+        .btn-grade {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            /* Gradasi biru cerah yang menyatu dengan background tapi kontras */
+            background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0, 114, 255, 0.3);
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-grade:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 114, 255, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 20px;
+        }
+
+        /* Animasi */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .container { padding: 30px 20px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .btn-grade { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Tim Kami</h1>
+            <p>Kolaborasi dalam harmoni untuk hasil terbaik</p>
+        </header>
+
+        <main>
+            <section class="team-grid">
+                
+                <!-- Kartu Owner -->
+                <article class="card owner">
+                    <img src="https://picsum.photos/seed/ramadhan/200/200" alt="Ramadhan Putra" class="avatar">
+                    <h3>Ramadhan Putra</h3>
+                    <div class="role">
+                        <i class="fas fa-crown"></i> Owner
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </article>
+
+                <!-- Kartu Kolaborator 1 -->
+                <article class="card">
+                    <img src="https://picsum.photos/seed/marvelino/200/200" alt="Marvelino Jovanka" class="avatar">
+                    <h3>Marvelino Jovanka</h3>
+                    <div class="role">
+                        <i class="fas fa-users"></i> Kolaborator
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </article>
+
+                <!-- Kartu Kolaborator 2 -->
+                <article class="card">
+                    <img src="https://picsum.photos/seed/rana/200/200" alt="Rana Kusuma" class="avatar">
+                    <h3>Rana Kusuma</h3>
+                    <div class="role">
+                        <i class="fas fa-users"></i> Kolaborator
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </article>
+
+            </section>
+
+            <div class="cta-section">
+                <!-- Tombol warna biru gradasi yang menyatu -->
+                <a href="nilai.html" class="btn-grade">
+                    <i class="fas fa-chart-bar"></i> Lihat Nilai
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Tim Proyek Kreatif.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
